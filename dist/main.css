@@ -1,0 +1,15 @@
+#res h3.r.focused-title {
+  overflow: visible;
+  position: relative;
+}
+
+.focused-link {
+  outline: none;
+}
+
+.focused-link::before {
+  content: '►';
+  left: -20px;
+  position: absolute;
+  transform: scale(0.7);
+}

@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+
+  "name": "Google Search Keyboard Navigation",
+  "description": "Adds keyboard navigation to Google Search.",
+  "version": "1.0.0",
+
+  "content_scripts": [{
+    "matches": [
+      "https://www.google.com/search?*"
+    ],
+    "css": ["main.css"],
+    "js": ["main.js"],
+    "run_at": "document_end"
+  }],
+  "permissions": [
+    "https://www.google.com/search?*"
+  ]
+}

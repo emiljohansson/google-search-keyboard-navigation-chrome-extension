@@ -1,0 +1,52 @@
+{
+  "name": "google-search-keyboard-navigation-chrome-extension",
+  "version": "0.0.0",
+  "description": "Adds keyboard navigation to Google Search.",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack index.js dist/main.js --watch",
+    "test": "nyc ava",
+    "coverage": "nyc report --reporter=lcov",
+    "coveralls": "nyc --reporter=lcov --reporter=text-lcov ava | coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "x"
+  },
+  "keywords": [
+    "google",
+    "search",
+    "navigation",
+    "keyboard"
+  ],
+  "author": "Emil Johansson <emiljohansson.se@gmail.com>",
+  "license": "MIT",
+  "ava": {
+    "babel": "inherit",
+    "files": [
+      "test.js",
+      "!dist/**/*"
+    ],
+    "require": [
+      "babel-register",
+      "./test-setup.js"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
+  "devDependencies": {
+    "ava": "^0.21.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "browser-env": "^3.1.2",
+    "coveralls": "^2.13.1",
+    "nyc": "^11.1.0",
+    "webpack": "^3.5.4"
+  },
+  "dependencies": {
+    "keyboard-handler": "^1.1.1"
+  }
+}
