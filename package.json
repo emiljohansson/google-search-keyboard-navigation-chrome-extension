@@ -1,6 +1,6 @@
 {
   "name": "google-search-keyboard-navigation-chrome-extension",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Adds keyboard navigation to Google Search.",
   "main": "index.js",
   "scripts": {
