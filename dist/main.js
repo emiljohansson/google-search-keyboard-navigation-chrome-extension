@@ -69,7 +69,7 @@
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_keyboard_handler__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_keyboard_handler__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_keyboard_handler___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_keyboard_handler__);
 
 
@@ -80,8 +80,22 @@ const searchField = document.querySelector('input[type="text"]')
 const titles = document.querySelectorAll('h3.r')
 const links = document.querySelectorAll('h3.r a')
 let focusIndex = -1
+let cmdIsDown = false
+
+Object(__WEBPACK_IMPORTED_MODULE_0_keyboard_handler__["keyIsDown"])(91, () => {
+  cmdIsDown = true
+})
+
+Object(__WEBPACK_IMPORTED_MODULE_0_keyboard_handler__["keyReleased"])(event => {
+  if (cmdIsDown && event.key === 'Meta') {
+    cmdIsDown = false
+  }
+})
 
 Object(__WEBPACK_IMPORTED_MODULE_0_keyboard_handler__["keyPressed"])(event => {
+  if (cmdIsDown) {
+    return
+  }
   const key = event.key
   const isBackspace = key === 'Backspace'
   if (key === 'ArrowDown') {
@@ -134,7 +148,10 @@ const removeFocused = () => {
 const canFocusField = key => key.length === 1 && /[a-z0-9]/i.test(key)
 
 const removeFromSearchFieldValue = () => {
-  searchField.value = searchField.value
+  const value = searchField.value
+  searchField.focus()
+  searchField.value = ''
+  searchField.value = value
 }
 
 const addToSearchFieldValue = () => {
@@ -149,9 +166,7 @@ const addToSearchFieldValue = () => {
 
 
 /***/ }),
-/* 1 */,
-/* 2 */,
-/* 3 */
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

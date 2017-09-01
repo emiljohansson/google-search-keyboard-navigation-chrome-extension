@@ -1,4 +1,4 @@
-import { keyPressed } from 'keyboard-handler'
+import { keyIsDown, keyPressed, keyReleased } from 'keyboard-handler'
 
 const focusTitleClass = 'focused-title'
 const focusLinkClass = 'focused-link'
@@ -7,8 +7,22 @@ const searchField = document.querySelector('input[type="text"]')
 const titles = document.querySelectorAll('h3.r')
 const links = document.querySelectorAll('h3.r a')
 let focusIndex = -1
+let cmdIsDown = false
+
+keyIsDown(91, () => {
+  cmdIsDown = true
+})
+
+keyReleased(event => {
+  if (cmdIsDown && event.key === 'Meta') {
+    cmdIsDown = false
+  }
+})
 
 keyPressed(event => {
+  if (cmdIsDown) {
+    return
+  }
   const key = event.key
   const isBackspace = key === 'Backspace'
   if (key === 'ArrowDown') {
@@ -61,7 +75,10 @@ const removeFocused = () => {
 const canFocusField = key => key.length === 1 && /[a-z0-9]/i.test(key)
 
 const removeFromSearchFieldValue = () => {
-  searchField.value = searchField.value
+  const value = searchField.value
+  searchField.focus()
+  searchField.value = ''
+  searchField.value = value
 }
 
 const addToSearchFieldValue = () => {
