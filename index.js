@@ -5,7 +5,7 @@ const focusLinkClass = 'focused-link'
 
 const searchField = document.querySelector('input[type="text"]')
 const titles = document.querySelectorAll('h3.r')
-const links = document.querySelectorAll('h3.r a')
+const links = document.querySelectorAll('h3.r a, ._bCp a')
 let focusIndex = -1
 let cmdIsDown = false
 
