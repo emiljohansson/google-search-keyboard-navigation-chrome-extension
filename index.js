@@ -4,7 +4,7 @@ const focusTitleClass = 'focused-title'
 const focusLinkClass = 'focused-link'
 
 const searchField = document.querySelector('input[type="text"]')
-const titles = document.querySelectorAll('h3.r')
+const titles = [...document.querySelectorAll('h3.r, ._bCp')].filter(el => !el.classList.contains('_Ojt'))
 const links = document.querySelectorAll('h3.r a, ._bCp a')
 let focusIndex = -1
 let cmdIsDown = false
